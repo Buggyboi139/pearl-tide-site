@@ -1,0 +1,125 @@
+/* Pearl Tide's site (pearltide.world): one deep-sea look, the game's own:
+   ink on deep water, brass headings, a pearl's glow. Dark by design. The
+   display face is served from here (SIL Open Font License), so the site
+   loads nothing from anyone else. */
+@font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: normal; font-display: swap; src: url("/fonts/cormorant-600.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: italic; font-display: swap; src: url("/fonts/cormorant-600-italic.woff2") format("woff2"); }
+:root {
+  --deep: #031c2e;
+  --sea: #062f4a;
+  --glass: rgba(10, 58, 87, 0.62);
+  --line: rgba(233, 207, 152, 0.28);
+  --ink: #e8f8fc;
+  --soft: rgba(232, 248, 252, 0.78);
+  --brass: #e9cf98;
+  --link: #9fe8ff;
+  --pearl: radial-gradient(circle at 35% 30%, #ffffff 0%, #f6e9ff 30%, #d6f2ff 58%, #b8d8f0 100%);
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--deep); }
+body {
+  margin: 0; min-height: 100vh; color: var(--ink); font: 17px/1.65 var(--body);
+  background:
+    radial-gradient(60rem 28rem at 50% -6rem, rgba(29, 125, 147, 0.75), transparent 70%),
+    radial-gradient(40rem 30rem at 85% 40%, rgba(120, 90, 200, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--sea) 0%, var(--deep) 60%) no-repeat, var(--deep);
+}
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: #d4f6ff; }
+a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+
+/* The bar at the top of every page. */
+.bar { position: sticky; top: 0; z-index: 2; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background: rgba(3, 28, 46, 0.72); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 960px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35); }
+.brand span { font: 600 23px/1 var(--display); color: var(--brass); letter-spacing: 0.01em; }
+.bar nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+.bar nav a { color: var(--soft); text-decoration: none; }
+.bar nav a:hover, .bar nav a[aria-current="page"] { color: var(--brass); }
+
+main { max-width: 760px; margin: 0 auto; padding: 44px 20px 72px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; color: var(--brass); text-wrap: balance; }
+h1 { font-size: clamp(36px, 6vw, 48px); line-height: 1.08; margin: 0 0 10px; }
+h2 { font-size: 27px; line-height: 1.2; margin: 38px 0 6px; }
+h3 { font-size: 21px; margin: 22px 0 2px; }
+p, li { color: var(--soft); }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 19px; color: var(--ink); }
+.small { font-size: 14px; color: rgba(232, 248, 252, 0.6); }
+ul { padding-left: 1.2em; }
+li + li { margin-top: 4px; }
+
+/* The home page's opening: her beneath the sleeping whale, full width,
+   fading into the page. */
+body { overflow-x: clip; }
+.hero { position: relative; margin: -44px calc(50% - 50vw) 0; padding: 72px 20px 54px; text-align: center;
+  background: linear-gradient(180deg, rgba(3, 28, 46, 0.35) 0%, rgba(3, 28, 46, 0.55) 55%, var(--deep) 100%), url("/img/hero.webp") center 35% / cover no-repeat; }
+.hero-in { max-width: 720px; margin: 0 auto; }
+.hero-icon { width: 132px; height: 132px; border-radius: 30px; box-shadow: 0 16px 44px rgba(0, 0, 0, 0.5), 0 0 60px rgba(180, 220, 255, 0.25); }
+.hero h1 { margin-top: 20px; font-size: clamp(46px, 8vw, 66px); text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55); }
+.hero .tag { font: italic 600 25px/1.3 var(--display); color: var(--ink); margin: 0 0 14px; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+.hero .lead { max-width: 34em; margin: 0 auto; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6); }
+.soon { display: inline-block; margin-top: 24px; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line);
+  background: rgba(3, 28, 46, 0.6); color: var(--brass); font-size: 15px; letter-spacing: 0.02em; }
+.center { text-align: center; }
+/* The home page is wider than the reading pages. */
+.page-index main { max-width: 1000px; }
+/* A page's own banner (Help). */
+.banner { margin: -44px calc(50% - 50vw) 28px; height: clamp(150px, 26vw, 260px);
+  background: linear-gradient(180deg, transparent 40%, var(--deep) 100%), url("/img/banner.webp") center / cover no-repeat; }
+/* (The 404 reuses .hero's layout without the picture.) */
+.plain.hero { background: none; margin-top: 0; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 40px 0 8px; }
+.card { margin: 0; background: var(--glass); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.card img, .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.card figcaption { padding: 12px 16px 16px; }
+.card h3 { margin: 0 0 4px; }
+.card p { margin: 0; font-size: 15.5px; }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 6px; }
+.gallery figure { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--glass); }
+.gallery figcaption { padding: 8px 12px 10px; font-size: 14px; color: var(--soft); }
+@media (max-width: 560px) {
+  .gallery { grid-template-columns: 1fr 1fr; } .gallery figure:last-child { grid-column: 1 / -1; } .gallery figure:last-child img { aspect-ratio: 16 / 10; }
+  /* (Stacked on a phone, the cards' pictures are wider than tall, so the page isn't three screens of picture.) */
+  .card img { aspect-ratio: 4 / 3; object-position: 50% 22%; }
+  .card img.low { object-position: 50% 62%; }
+}
+
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 28px; }
+.links a { display: block; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(3, 28, 46, 0.5);
+  color: var(--ink); text-decoration: none; }
+.links a:hover { border-color: var(--brass); }
+.links b { display: block; font: 600 20px/1.2 var(--display); color: var(--brass); }
+.links small { color: var(--soft); font-size: 13.5px; }
+
+/* A page's own contents, as links. */
+.toc { columns: 2 220px; column-gap: 24px; padding: 14px 18px; margin: 18px 0 8px; border: 1px solid var(--line); border-radius: 12px;
+  background: rgba(3, 28, 46, 0.45); list-style: none; }
+.toc li { margin: 0 0 4px; break-inside: avoid; }
+.toc a { text-decoration: none; }
+
+.note { padding: 12px 16px; border-left: 3px solid var(--brass); background: var(--glass); border-radius: 0 10px 10px 0; }
+.mail { font-weight: 600; color: var(--ink); user-select: all; }
+
+footer { border-top: 1px solid var(--line); }
+.foot { max-width: 960px; margin: 0 auto; padding: 18px 20px 34px; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: rgba(232, 248, 252, 0.6); }
+.foot a { color: var(--soft); text-decoration: none; }
+.foot a:hover { color: var(--brass); }
+.foot .c { margin-right: auto; }
+
+@media (max-width: 560px) {
+  body { font-size: 16.5px; }
+  .bar-in { padding: 10px 16px; gap: 10px; }
+  .bar nav { gap: 12px; font-size: 14.5px; }
+  main { padding: 30px 16px 56px; }
+  .hero { margin-top: -30px; padding: 52px 16px 40px; }
+  .hero-icon { width: 108px; height: 108px; border-radius: 24px; }
+  .banner { margin-top: -30px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
