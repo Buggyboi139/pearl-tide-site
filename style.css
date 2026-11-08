@@ -1,0 +1,340 @@
+/* Pearl Tide's site (pearltide.world): one deep-sea look, the game's own:
+   ink on deep water, brass headings, a pearl's glow. Dark by design. The
+   display face is served from here (SIL Open Font License), so the site
+   loads nothing from anyone else. The home page (2026-11-07, the owner's
+   pick of three redesigns, "In your hand") leads with an iPhone showing the
+   game's own screens; every picture and clip keeps its own shape, never
+   cropped. The gallery runs full width; the reading pages (help, support,
+   privacy, refunds, terms) keep a narrow column. */
+@font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: normal; font-display: swap; src: url("/fonts/cormorant-600.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: italic; font-display: swap; src: url("/fonts/cormorant-600-italic.woff2") format("woff2"); }
+:root {
+  --deep: #031c2e;
+  --sea: #062f4a;
+  --glass: rgba(10, 58, 87, 0.62);
+  --line: rgba(233, 207, 152, 0.28);
+  --ink: #e8f8fc;
+  --soft: rgba(232, 248, 252, 0.8);
+  --dim: rgba(232, 248, 252, 0.62);
+  --brass: #e9cf98;
+  --link: #9fe8ff;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --shadow: 0 24px 60px rgba(0, 4, 10, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+  --bar: 60px;
+  --gut: 24px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--deep); scroll-padding-top: calc(var(--bar) + 16px); }
+html.viewing { overflow: hidden; }
+body {
+  margin: 0; min-height: 100vh; color: var(--ink); font: 17px/1.65 var(--body); overflow-x: clip; -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(60rem 28rem at 50% -6rem, rgba(29, 125, 147, 0.75), transparent 70%),
+    radial-gradient(40rem 30rem at 85% 40%, rgba(120, 90, 200, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--sea) 0%, var(--deep) 60%) no-repeat, var(--deep);
+}
+figure { margin: 0; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: #d4f6ff; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 6px; }
+button { font: inherit; color: inherit; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 60; padding: 8px 14px; border-radius: 8px; background: var(--brass); color: #1c1407; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 10px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gut); }
+.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--link); }
+
+/* The bar at the top of every page, with the App Store badge. */
+.bar { position: sticky; top: 0; z-index: 30; height: var(--bar); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(3, 28, 46, 0.76); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 1240px; height: 100%; margin: 0 auto; padding: 0 var(--gut); display: flex; align-items: center; gap: 22px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35); }
+.brand span { font: 600 23px/1 var(--display); color: var(--brass); letter-spacing: 0.01em; white-space: nowrap; }
+.bar nav { display: flex; gap: 20px; font-size: 15px; }
+.bar nav a { color: var(--soft); text-decoration: none; white-space: nowrap; }
+.bar nav a:hover, .bar nav a[aria-current="page"] { color: var(--brass); }
+.bar .store-badge { box-shadow: none; }
+.bar .store-badge img { height: 40px; }
+
+/* Buttons. Apple's own "Download on the App Store" badge
+   (site/app-store-badge.svg, from Apple's marketing tools, unchanged): 48 px
+   tall in the page, 40 (Apple's least) in the bar, with a quarter of its
+   height clear round it (.cta's gap); a quiet button beside it. */
+.store-badge { display: inline-block; line-height: 0; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
+.store-badge img { display: block; width: auto; height: 48px; }
+.ghost { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--line); cursor: pointer;
+  background: rgba(3, 28, 46, 0.6); color: var(--brass); font-size: 15px; letter-spacing: 0.02em; text-decoration: none; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.ghost:hover { color: var(--brass); border-color: var(--brass); }
+.ghost .tri, .watch .tri { width: 0; height: 0; border-style: solid; border-width: 5.5px 0 5.5px 9px; border-color: transparent transparent transparent currentColor; }
+.watch { display: inline-flex; align-items: center; gap: 9px; padding: 7px 16px 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(3, 28, 46, 0.5);
+  color: var(--brass); font-size: 14px; letter-spacing: 0.03em; cursor: pointer; }
+.watch:hover { border-color: var(--brass); }
+.watch small { color: var(--dim); font-size: 13px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* A picture or clip, whole: its box takes the media's own shape. (The edge
+   is drawn over it, not round it: a border would add to a flex item's size
+   and break rows sized by aspect ratio.) */
+.frame { position: relative; display: block; overflow: hidden; border-radius: 16px; background: var(--sea); box-shadow: var(--shadow); }
+.frame::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--line); pointer-events: none; }
+.frame > img, .frame > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+[data-view] { cursor: zoom-in; }
+/* A film with its controls (the trailer). */
+.film { border-radius: 20px; background: #000; }
+.film video { aspect-ratio: 16 / 9; }
+/* Loops play like GIFs (site.js): no buttons of a player's, iOS's start
+   button included (it shows where a page can't start a video itself, as in
+   Low Power Mode; the poster stays). */
+:is(video.loop, .screen video)::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+:is(video.loop, .screen video)::-webkit-media-controls { display: none !important; }
+
+/* The reading pages. */
+main { max-width: 760px; margin: 0 auto; padding: 44px 20px 72px; }
+.page-index main, .page-gallery main { max-width: none; padding: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; color: var(--brass); text-wrap: balance; }
+h1 { font-size: clamp(36px, 6vw, 48px); line-height: 1.08; margin: 0 0 10px; }
+h2 { font-size: 27px; line-height: 1.2; margin: 38px 0 6px; }
+h3 { font-size: 21px; margin: 22px 0 2px; }
+p, li { color: var(--soft); }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 19px; color: var(--ink); }
+.small { font-size: 14px; color: var(--dim); }
+.center { text-align: center; }
+ul { padding-left: 1.2em; }
+li + li { margin-top: 4px; }
+/* A page's own banner (Help). */
+.banner { margin: -44px calc(50% - 50vw) 28px; height: clamp(170px, 30vw, 320px);
+  background: linear-gradient(180deg, transparent 45%, var(--deep) 100%), url("/img/whale-1600.webp") center 42% / cover no-repeat; }
+/* A page's own contents, as links. */
+.toc { columns: 2 220px; column-gap: 24px; padding: 14px 18px; margin: 18px 0 8px; border: 1px solid var(--line); border-radius: 12px;
+  background: rgba(3, 28, 46, 0.45); list-style: none; }
+.toc li { margin: 0 0 4px; break-inside: avoid; }
+.toc a { text-decoration: none; }
+.note { padding: 12px 16px; border-left: 3px solid var(--brass); background: var(--glass); border-radius: 0 10px 10px 0; }
+.mail { font-weight: 600; color: var(--ink); user-select: all; }
+/* (The 404's.) */
+.lost { padding: 40px 0; text-align: center; }
+.lost img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(180, 220, 255, 0.25); }
+.lost h1 { margin: 14px 0 0; font-size: clamp(36px, 6vw, 56px); line-height: 1; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6); }
+
+/* The home page: the iPhone leads. The opening holds a phone showing the
+   game's own screens; then the ten mermaids, moving; then a tour, the phone
+   held still beside it while eight steps go by, each putting its screen on
+   the phone and showing its clips and pictures whole beside the words (on a
+   phone each step carries its own small phone). Only real iPhone screens go
+   in the phone. Then the trailer and the five 15-second highlights, a strip
+   of postcards, and the close; on a phone the badge waits in a dock at the
+   bottom once the opening's has gone by. */
+body.page-index { line-height: 1.6; }
+:where(.page-index) :is(p, h1, h2, h3) { margin: 0; }
+:where(.page-index) li + li { margin-top: 0; }
+
+/* A phone, after the 6.9-inch iPhone its screens were taken on: a thin
+   titanium rail (the border), black glass round the screen (the padding),
+   the Dynamic Island with its camera, and the buttons standing off its
+   sides: the Action button and volume on the left, the side button on the
+   right. --w its width. */
+.phone { --w: 300px; --rim: calc(var(--w) * 0.011); --bez: calc(var(--w) * 0.019); --btn: max(1.5px, calc(var(--w) * 0.0075));
+  position: relative; width: var(--w); padding: var(--bez); border: var(--rim) solid transparent; border-radius: calc(var(--w) * 0.1625);
+  background: linear-gradient(160deg, #0d1014, #030405 32%, #000 70%, #06080a) padding-box,
+    linear-gradient(140deg, #c4cad1 0%, #6a7077 8%, #33373c 24%, #202326 50%, #33373c 76%, #6f757d 92%, #c9cfd6 100%) border-box;
+  box-shadow: 0 0 0 1px rgba(233, 207, 152, 0.18), 0 40px 90px rgba(0, 4, 10, 0.6), 0 0 120px rgba(80, 180, 220, 0.14); }
+.phone::before, .phone::after { content: ""; position: absolute; width: var(--btn); border-radius: 1px; pointer-events: none; }
+.phone::before { right: calc(100% + var(--rim)); top: 19%; height: 26%; background: linear-gradient(90deg, #17191c, #7a8088 60%, #2c3035);
+  -webkit-mask: linear-gradient(#000 0 16.9%, transparent 16.9% 32.3%, #000 32.3% 61.5%, transparent 61.5% 70.8%, #000 70.8%);
+  mask: linear-gradient(#000 0 16.9%, transparent 16.9% 32.3%, #000 32.3% 61.5%, transparent 61.5% 70.8%, #000 70.8%); }
+.phone::after { left: calc(100% + var(--rim)); top: 31%; height: 12.5%; background: linear-gradient(90deg, #2c3035, #7a8088 40%, #17191c); }
+/* (The screen's corners are the rail's, less the rail and the glass.) */
+.screen { position: relative; aspect-ratio: 1320 / 2868; overflow: hidden; border-radius: calc(var(--w) * 0.1325); background: #021522; }
+.screen :is(img, video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.6s ease; }
+.screen :is(img, video).on { opacity: 1; }
+.screen::after { content: ""; position: absolute; z-index: 2; top: 1.2%; left: 50%; width: 28.4%; height: 3.85%; transform: translateX(-50%); border-radius: 99px;
+  background: radial-gradient(circle at 79% 50%, #1d2c40 0 2.6%, #0b121b 4.6%, #000 6.4%); }
+
+/* The opening. */
+.hero { padding: clamp(40px, 6vw, 84px) 0 clamp(40px, 6vw, 72px); overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 6vw, 96px); align-items: center; }
+.hero h1 { font-size: clamp(60px, 8vw, 116px); line-height: 0.92; }
+.hero .tag { margin: 12px 0 20px; font: italic 600 clamp(26px, 3vw, 36px)/1.2 var(--display); color: var(--ink); }
+.hero .say { max-width: 30em; margin-bottom: 28px; font-size: 18.5px; color: var(--soft); }
+.hero .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; padding: 0; list-style: none; font-size: 14.5px; color: var(--dim); }
+.hero .facts b { font: 600 22px/1 var(--display); color: var(--brass); margin-right: 6px; }
+.hero .phone { --w: clamp(250px, 24vw, 330px); transform: rotate(3deg); }
+.hero .stage { position: relative; }
+.hero .stage::before { content: ""; position: absolute; inset: -18% -40%; z-index: -1; background: radial-gradient(closest-side, rgba(66, 170, 200, 0.35), transparent); }
+
+/* The cast. */
+.cast { max-width: 1400px; margin: 0 auto; padding: 0 var(--gut); }
+.cast .frame { border-radius: 22px; aspect-ratio: 16 / 9; }
+.cast p { margin-top: 14px; text-align: center; font: italic 600 clamp(18px, 1.8vw, 22px)/1.4 var(--display); color: var(--soft); text-wrap: balance; }
+
+/* The tour. */
+.tour { padding-top: clamp(64px, 8vw, 112px); }
+.tour-head { text-align: center; margin-bottom: clamp(20px, 3vw, 40px); }
+.tour-head h2 { font-size: clamp(36px, 4.8vw, 62px); line-height: 1.02; }
+.tour-head p:not(.eyebrow) { max-width: 34em; margin: 12px auto 0; font-size: 17.5px; text-wrap: balance; }
+.tour-in { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(36px, 5vw, 80px); }
+.hold { position: sticky; top: calc(var(--bar) + (100vh - var(--bar) - var(--ph)) / 2); top: calc(var(--bar) + (100svh - var(--bar) - var(--ph)) / 2); align-self: start;
+  --ph: min(78vh, 760px); }
+.hold .phone { --w: calc(var(--ph) * 0.437); }
+.hold .cap { width: calc(var(--ph) * 0.437); margin-top: 14px; min-height: 2.8em; font-size: 13.5px; color: var(--dim); text-align: center; }
+.steps { margin: 0; padding: 0; list-style: none; }
+.step { min-height: 84vh; display: flex; flex-direction: column; justify-content: center; padding: 6vh 0; opacity: 0.38; transition: opacity 0.5s ease; }
+.step.on { opacity: 1; }
+.step .n { font: italic 600 22px/1 var(--display); color: var(--link); }
+.step h3 { margin: 8px 0 12px; font-size: clamp(34px, 3.8vw, 52px); line-height: 1.02; }
+.step p { max-width: 36em; font-size: 17.5px; }
+.step .mini { display: none; }
+.media { display: flex; gap: 12px; margin-top: 26px; }
+.media .frame { flex: var(--ar) 1 0; min-width: 0; aspect-ratio: var(--ar); }
+.step .watch { margin-top: 18px; align-self: flex-start; }
+
+/* The trailer and the highlights (2026-11-07): five 15-second ads, the two
+   sideways ones stacked beside the three upright ones, all one height; on a
+   phone the upright ones slide sideways above the others. */
+.band { padding: clamp(72px, 9vw, 128px) 0 0; text-align: center; }
+.band h2 { font-size: clamp(36px, 4.6vw, 58px); line-height: 1.04; }
+.band .sub { max-width: 34em; margin: 10px auto 0; font-size: 17px; text-wrap: balance; }
+.tv { max-width: 1240px; margin: clamp(26px, 3vw, 40px) auto 0; padding: 0 var(--gut); }
+.reel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.05fr); gap: 16px; margin-top: clamp(26px, 3vw, 40px); }
+.reel .wide { display: grid; gap: 16px; align-content: space-between; }
+.reel .tall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.reel video { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); background: #000; box-shadow: var(--shadow); }
+.reel .wide video { height: auto; aspect-ratio: 16 / 9; }
+.reel .tall video { aspect-ratio: 9 / 16; }
+
+/* Postcards: every picture, whole, in a strip. */
+.cards { position: relative; margin-top: clamp(26px, 3vw, 40px); }
+.strip { display: flex; gap: 16px; padding: 6px max(var(--gut), calc(50vw - 620px)) 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-padding: 0 max(var(--gut), calc(50vw - 620px)); scrollbar-width: thin; scrollbar-color: var(--line) transparent; text-align: left; }
+.strip figure { flex: none; width: clamp(280px, 34vw, 520px); margin: 0; scroll-snap-align: start; }
+.strip .frame { aspect-ratio: 16 / 9; border-radius: 14px; }
+.strip figcaption { padding: 10px 2px 0; font-size: 14.5px; color: var(--soft); }
+.arrows { display: flex; justify-content: flex-end; gap: 10px; max-width: 1240px; margin: 0 auto; padding: 0 var(--gut) 10px; }
+.arrows button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(3, 28, 46, 0.6);
+  color: var(--brass); font: 28px/1 var(--display); cursor: pointer; }
+.arrows button:hover { border-color: var(--brass); }
+
+/* The close. */
+.closing { padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 7vw, 88px); text-align: center; }
+.closing h2 { font-size: clamp(38px, 5.2vw, 64px); line-height: 1.04; }
+.closing .lead { margin: 14px auto 28px; max-width: 34em; font-size: 18px; color: var(--soft); text-wrap: balance; }
+.closing .cta { justify-content: center; }
+.closing .langs { margin-top: 26px; color: var(--dim); font-size: 15px; }
+
+/* On a phone the badge waits at the bottom once the opening's has gone by
+   (site.js), and leaves again at the close. */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: none; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(3, 28, 46, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line); transform: translateY(110%); transition: transform 0.35s ease; }
+.dock b { display: block; font: 600 21px/1.1 var(--display); color: var(--brass); }
+.dock span { display: block; font-size: 13px; color: var(--dim); }
+.dock .store-badge { box-shadow: none; }
+.dock .store-badge img { height: 44px; }
+.dock.on { transform: none; }
+
+/* The gallery. */
+.gallery-page { padding: clamp(56px, 8vw, 104px) 0; }
+.gallery-page h1 { font-size: clamp(40px, 5.5vw, 60px); }
+.gallery-page .lead { max-width: 40em; }
+.gallery-page .g-sub { margin: 64px 0 8px; font-size: clamp(32px, 4.4vw, 50px); line-height: 1.05; }
+.gallery-page .lead + .g-sub { margin-top: 40px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 28px 24px; margin: 20px 0 10px; }
+.gallery-grid figcaption { padding: 10px 4px 0; font-size: 15px; color: var(--soft); }
+.gallery-trailer { margin-top: 56px; }
+/* A picture, whole, opening at full size (site.js). */
+.shot { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--sea); }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; transition: transform 0.6s ease; }
+.shot::after { content: ""; position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; opacity: 0; transition: opacity 0.25s;
+  background: rgba(3, 28, 46, 0.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e9cf98' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E") center / 18px no-repeat; }
+.shot:hover img { transform: scale(1.025); }
+.shot:hover::after, .shot:focus-visible::after { opacity: 1; }
+/* The game on iPhone (2026-11-05): all ten screens, whole and upright, as
+   many to a row as fit, centered, each opening at full size. */
+.shot.tall { border-radius: clamp(14px, 1.7vw, 26px); }
+.shot.tall img { aspect-ratio: 1320 / 2868; }
+.phones { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px 24px; margin: 30px 0 10px; }
+.phones figure { flex: 0 1 260px; }
+.phones figcaption { padding: 12px 2px 0; font: italic 600 clamp(18px, 1.5vw, 21px)/1.2 var(--display); color: var(--brass); text-align: center; text-wrap: balance; }
+
+/* The viewer (site.js): pictures and clips at full size. */
+.viewer { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 16px; background: rgba(1, 10, 18, 0.95); }
+.viewer[hidden] { display: none; }
+.viewer figure { margin: 0; display: grid; justify-items: center; gap: 12px; }
+.viewer img, .viewer video { display: block; max-width: min(96vw, 2560px); max-height: calc(100vh - 110px); max-height: calc(100svh - 110px); width: auto; height: auto;
+  border-radius: 8px; box-shadow: var(--shadow); background: #000; }
+.viewer figcaption { max-width: 60em; color: var(--soft); text-align: center; font-size: 15px; }
+.viewer button { position: absolute; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line);
+  background: rgba(3, 28, 46, 0.75); color: var(--brass); font: 30px/1 var(--display); cursor: pointer; }
+.viewer button:hover { border-color: var(--brass); }
+.v-close { top: 14px; right: 14px; }
+.v-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.v-next { right: 14px; top: 50%; transform: translateY(-50%); }
+.v-count { position: absolute; top: 26px; left: 20px; font-size: 14px; color: var(--dim); }
+
+footer { border-top: 1px solid var(--line); }
+.foot { max-width: 1240px; margin: 0 auto; padding: 20px var(--gut) 36px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; color: var(--dim); }
+.foot a { color: var(--soft); text-decoration: none; }
+.foot a:hover { color: var(--brass); }
+.foot .c { margin-right: auto; }
+
+@media (max-width: 999px) {
+  .tour-in { display: block; }
+  .hold { display: none; }
+  /* (The step's small phone stands at its left, the words beside it, the
+     clips and pictures under both.) */
+  .step { display: block; min-height: 0; opacity: 1; padding: 34px 0; border-top: 1px solid var(--line); }
+  .step:first-child { border-top: 0; }
+  .step::after { content: ""; display: block; clear: both; }
+  .step .mini { display: block; float: left; margin: 4px 18px 10px 0; }
+  .step .mini .phone { --w: clamp(118px, 30vw, 220px); }
+  .step .mini .screen video { opacity: 1; }
+  .step .media { clear: both; padding-top: 6px; }
+  .step .watch { display: flex; width: fit-content; }
+  .step h3 { font-size: clamp(28px, 6vw, 40px); }
+  .step p { font-size: 16px; }
+}
+@media (max-width: 860px) { .bar nav a.wide-only { display: none; } }
+@media (max-width: 760px) {
+  :root { --gut: 16px; --bar: 56px; }
+  .bar .store-badge { display: none; }
+  .dock { display: flex; }
+  .bar-in { gap: 14px; }
+  .bar nav { gap: 14px; font-size: 14.5px; }
+  .brand span { font-size: 21px; }
+  .frame { border-radius: 12px; }
+  .page-index footer { padding-bottom: 70px; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); text-align: center; }
+  .hero .cta, .hero .facts { justify-content: center; }
+  .hero .say { margin-left: auto; margin-right: auto; }
+  .hero .stage { justify-self: center; margin-top: 8px; }
+  .hero .phone { --w: min(64vw, 260px); }
+  .cast { padding: 0; }
+  .cast .frame { border-radius: 0; }
+  .cast p { padding: 0 var(--gut); }
+  .media { gap: 8px; margin-top: 18px; }
+  .reel { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .reel .wide { gap: 12px; }
+  .reel .tall { order: -1; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62vw; gap: 12px; margin: 0 calc(-1 * var(--gut)); padding: 4px var(--gut) 10px;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--gut); scrollbar-width: none; }
+  .reel .tall video { height: auto; scroll-snap-align: start; }
+  .strip figure { width: 82vw; }
+  .arrows { display: none; }
+  .phones { gap: 22px 14px; }
+  .phones figure { flex-basis: calc(50% - 7px); }
+  .viewer { padding: 8px; }
+  .viewer button { width: 42px; height: 42px; }
+  .v-prev, .v-next { top: auto; bottom: 14px; transform: none; }
+}
+/* (The narrowest phones: the bar's name and links still on one line.) */
+@media (max-width: 359px) { .bar-in { gap: 10px; } .bar nav { gap: 11px; } }
+@media (max-width: 600px) {
+  body { font-size: 16.5px; }
+  main { padding: 30px 16px 56px; }
+  .shot { border-radius: 10px; }
+  .banner { margin-top: -30px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
