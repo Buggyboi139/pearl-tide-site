@@ -1,8 +1,8 @@
 // Pearl Tide's site: loops that play like GIFs while they're on screen
 // (silent, round and round, no buttons; the opening's iPhone is one), one
 // video with sound at a time (none once the page is left), the viewer for
-// pictures and clips, the phone's dock, and the tour's iPhone, playing each
-// step's clip.
+// pictures and clips, the phone's dock, the tour's iPhone, playing each
+// step's clip, and a page's switch between sets (What's new: iPhone or iPad).
 // Everything is served from this site; nothing loads from anywhere else.
 (() => {
   // Where motion is unwelcome or data is being saved, loops hold on their
@@ -113,9 +113,20 @@
     const el = e.target.closest('[data-view]');
     if (!el || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
-    const all = [...new Map([...document.querySelectorAll('[data-view]')].map((x) => [itemOf(x).src, itemOf(x)])).values()];
+    // (Not what a switch has hidden.)
+    const all = [...new Map([...document.querySelectorAll('[data-view]')].filter((x) => !x.closest('[hidden]')).map((x) => [itemOf(x).src, itemOf(x)])).values()];
     view(all, all.findIndex((x) => x.src === itemOf(el).src));
   });
+
+  // A switch: a [data-show] button shows its section's [data-set] of that
+  // name and hides the others (their loops start once they're on screen).
+  for (const b of document.querySelectorAll('[data-show]')) {
+    b.addEventListener('click', () => {
+      const sec = b.closest('section');
+      for (const x of sec.querySelectorAll('[data-show]')) x.setAttribute('aria-pressed', String(x === b));
+      for (const p of sec.querySelectorAll('[data-set]')) p.hidden = p.dataset.set !== b.dataset.show;
+    });
+  }
 
   // The phone's dock: on once the opening's badge has gone by, off at the close.
   const dock = document.querySelector('.dock'), from = document.querySelector('[data-dock-from]'), to = document.querySelector('.closing');
