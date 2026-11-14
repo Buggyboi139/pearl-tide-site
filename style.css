@@ -338,7 +338,7 @@ body.page-index { line-height: 1.6; }
    taking turns. */
 .wn-band { padding: clamp(48px, 7vw, 96px) 0; border-top: 1px solid rgba(233, 207, 152, 0.14); }
 .wn-band .wrap { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 88px); align-items: center; }
-.wn-band:nth-of-type(even) .wn-copy { order: 2; }
+.wn-band:nth-of-type(odd) .wn-copy { order: 2; }
 .wn-copy h3 { margin: 4px 0 18px; font-size: clamp(28px, 3.4vw, 38px); line-height: 1.05; }
 .wn-quote { margin: 0 0 20px; padding: 12px 18px; border-left: 3px solid var(--brass); border-radius: 0 12px 12px 0; background: var(--glass);
   font: italic 600 clamp(19px, 1.9vw, 22px)/1.35 var(--display); color: var(--ink); }
@@ -386,6 +386,23 @@ body.page-index { line-height: 1.6; }
 .wn-shots .s { font-size: 13.5px; line-height: 1.4; color: var(--dim); }
 .shot.tab { border-radius: clamp(10px, 1.2vw, 16px); }
 .shot.tab img { aspect-ratio: 3 / 4; }
+/* The Reef Runway, coming next: its line under the card's seven, then a
+   section of its own before the bands (which is why the bands' sides turn
+   on odd, not even): points in two columns, three clips, five screens. */
+.wn-next { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-top: 14px; padding: 14px 16px;
+  border: 1px solid rgba(233, 207, 152, 0.34); border-radius: 14px; background: rgba(233, 207, 152, 0.06); color: var(--ink); text-decoration: none; }
+.wn-next:hover { background: rgba(233, 207, 152, 0.1); }
+.wn-next .go { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--link); white-space: nowrap; }
+.wn-next:hover .go { color: var(--brass); }
+.wn-runway .wn-points { columns: 2; column-gap: clamp(28px, 5vw, 64px); max-width: 980px; }
+.wn-runway .wn-points li { break-inside: avoid; margin: 0 0 10px; }
+.wn-runway .wn-clips { margin-top: clamp(30px, 4vw, 48px); }
+.wn-runway .wn-shots { margin-top: clamp(36px, 5vw, 60px); }
+@media (max-width: 760px) {
+  .wn-runway .wn-points { columns: 1; }
+  .wn-next { grid-template-columns: minmax(0, 1fr) auto; }
+  .wn-next .wn-pill { grid-column: 1 / -1; justify-self: start; }
+}
 .wn-previews { margin-top: clamp(44px, 6vw, 72px); text-align: center; }
 .wn-previews h3 { font-size: clamp(28px, 3.2vw, 38px); line-height: 1.1; }
 .wn-previews > p { max-width: 34em; margin: 8px auto 0; font-size: 16.5px; }
@@ -400,7 +417,7 @@ body.page-index { line-height: 1.6; }
   .wn-hero .cta { justify-content: center; }
   .wn-lead { margin-left: auto; margin-right: auto; }
   .wn-band .wrap { max-width: 640px; }
-  .wn-band:nth-of-type(even) .wn-copy { order: 0; }
+  .wn-band:nth-of-type(odd) .wn-copy { order: 0; }
   .wn-shots { gap: 22px 14px; }
   .wn-shots > li { flex-basis: calc((100% - 2 * 14px) / 3); }
   /* (The previews slide sideways.) */
