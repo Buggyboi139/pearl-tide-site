@@ -1,0 +1,21 @@
+name: Help with Pearl Tide
+description: A question or a problem with the game
+title: "Help: "
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you were doing, and what went wrong.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Phone model and system version
+      placeholder: iPhone 13, iOS 19.1
+  - type: input
+    id: version
+    attributes:
+      label: Game version
+      description: From the bottom of the game's Settings.
