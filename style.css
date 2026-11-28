@@ -504,3 +504,23 @@ footer { border-top: 1px solid var(--line); }
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
+
+/* Google's own "Get it on Google Play" badge (site/google-play-badge.png,
+   from play.google.com/intl/en_us/badges, unchanged): 646 x 250 with 41 px
+   clear round a 564 x 168 badge. Shown at the App Store badge's height
+   (--bh), its clear margin cropped by the link, so the two are one size, as
+   Google asks. */
+.store-badge { --bh: 48px; }
+.bar .store-badge { --bh: 40px; }
+.dock .store-badge { --bh: 44px; }
+.store-badge.play { overflow: hidden; height: var(--bh); border-radius: calc(var(--bh) * 0.12); }
+.store-badge.play img { height: calc(var(--bh) * 250 / 168); max-width: none; margin: calc(var(--bh) * -41 / 168); }
+.bar-in .store-badge + .store-badge { margin-left: -12px; }
+.dock .badges { display: flex; gap: 8px; flex: none; }
+@media (max-width: 440px) {
+  .dock > div:first-child { display: none; }
+  .dock { justify-content: center; }
+  .dock .store-badge { --bh: 40px; }
+  .dock .store-badge img { height: 40px; }
+  .dock .store-badge.play img { height: calc(var(--bh) * 250 / 168); }
+}

@@ -13,7 +13,7 @@ body:
     id: device
     attributes:
       label: Phone model and system version
-      placeholder: iPhone 13, iOS 19.1
+      placeholder: "iPhone 13, iOS 19.1 (or Galaxy S24, Android 16)"
   - type: input
     id: version
     attributes:
